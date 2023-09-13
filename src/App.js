@@ -8,8 +8,11 @@ import * as UserRoutes from './routes/Routes';
 import LandingPage from './views/common/LandingPage';
 import ProtectedRoutes from './utils/ProtectedRoutes';
 import Sidebar from './componets/Sidebar';
+import {useSelector} from 'react-redux';
 function App() {
 	const [user, setUser] = useState('Admin');
+	const data = useSelector((state) => state.UserReducer.user);
+	console.log(data);
 	return (
 		<div className='App'>
 			<div className='outerContainer'>
