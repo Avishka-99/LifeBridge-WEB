@@ -10,9 +10,8 @@ import ProtectedRoutes from './utils/ProtectedRoutes';
 import Sidebar from './componets/Sidebar';
 import {useSelector} from 'react-redux';
 function App() {
-	const [user, setUser] = useState('Admin');
-	const data = useSelector((state) => state.UserReducer.user);
-	console.log(data);
+	//const [user, setUser] = useState('Admin');
+	const user = useSelector((state) => state.UserReducer.user);
 	return (
 		<div className='App'>
 			<div className='outerContainer'>

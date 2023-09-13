@@ -18,10 +18,12 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import EuroIcon from '@mui/icons-material/Euro';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
+import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
+import MedicationIcon from '@mui/icons-material/Medication';
 import {useNavigate} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {FcAbout} from 'react-icons/fc';
-
+import TodayIcon from '@mui/icons-material/Today';
 import GradingIcon from '@mui/icons-material/Grading';
 import EventSeatIcon from '@mui/icons-material/EventSeat';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -39,44 +41,19 @@ const ShowSidebar = (props) => {
     navigate('/order');
   })*/
 	//console.log(user);
-	const customer = [
-		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
-		{id: 2, icon: <WindowIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Category', link: 'category', index: '2'},
-		{id: 3, icon: <StoreIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Restaurants', link: 'restaurants', index: '3'},
-		{id: 4, icon: <PeopleIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Community', link: 'community', index: '4'},
-		{id: 5, icon: <DynamicFeedIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Feeds', link: 'feed', index: '5'},
-		{id: 6, icon: <InfoIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'About', link: 'About', index: '6'},
-	];
-	const restaurant = [
-		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
-		{id: 2, icon: <FastfoodIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Products', link: 'products', index: '2'},
-		{id: 3, icon: <GradingIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Orders', link: 'orders', index: '3'},
-		{id: 4, icon: <EventSeatIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Reservation', link: 'reservation', index: '4'},
-		{id: 5, icon: <ShoppingCartIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Shopping', link: 'shopping', index: '5'},
-		{id: 6, icon: <EditCalendarIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'complains', link: 'Restaurant_complain', index: '6'},
-		{id: 7, icon: <LogoutIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'LogOut', link: 'logout', index: '7'},
-	];
+	const doctor = [{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'}];
 	const admin = [
 		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
 		{id: 2, icon: <GroupsIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Staff', link: 'staff', index: '2'},
-		{id: 3, icon: <TrendingUpIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Analytics', link: 'analytics', index: '3'},
-		{id: 4, icon: <DirectionsBikeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Riders', link: 'riders', index: '4'},
-		{id: 5, icon: <AccountCircleIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Profile', link: 'profile', index: '5'},
-		{id: 6, icon: <LogoutIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'LogOut', link: 'logout', index: '6'},
+		{id: 3, icon: <MedicalInformationIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Doctor', link: 'doctor', index: '3'},
 	];
-	const staff = [
+	const pharmacy = [
 		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
-		{id: 2, icon: <EuroIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Payments', link: 'payments', index: '2'},
-		{id: 3, icon: <RecordVoiceOverIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Complains', link: 'complains', index: '3'},
-		{id: 4, icon: <AccountCircleIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Profile', link: 'profile', index: '4'},
-		{id: 5, icon: <LogoutIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Logout', link: 'logout', index: '5'},
+		{id: 2, icon: <MedicationIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Medicine', link: 'medicine', index: '2'},
 	];
-	const manufacture = [
+	const cashier = [
 		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
-		{id: 2, icon: <FastfoodIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Products', link: 'row_products', index: '2'},
-		{id: 3, icon: <GradingIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Orders', link: 'row_orders"', index: '3'},
-		{id: 4, icon: <EditCalendarIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'complains', link: 'row_complains', index: '4'},
-		{id: 5, icon: <LogoutIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'LogOut', link: 'logout', index: '6'},
+		{id: 2, icon: <TodayIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Appoinments', link: 'appoinment', index: '2'},
 	];
 	//console.log(restaurant[0].icon.props.sx.fontSize)
 	const navigateTo = (page, index) => {
@@ -100,53 +77,40 @@ const ShowSidebar = (props) => {
 				</div>
 			</div>
 		);
-	} else if (props.type == 'Staff') {
+	} else if (props.type == 'Pharmacy') {
 		return (
 			<div className={`sidebar ${expanded ? 'expanded' : 'collapsed'}`} onSelect={(item) => console.log(item)}>
 				<div className='expand-toggle' onClick={toggleSidebar}>
 					{expanded ? <MenuOutlinedIcon /> : <MenuOutlinedIcon />}
 				</div>
 				<div>
-					{staff.map((item) => (
+					{pharmacy.map((item) => (
 						<MenuItem key={item.id} icon={item.icon} labelMargin={expanded ? {marginLeft: '10%'} : {marginLeft: '0%'}} label={expanded ? item.label : null} style={expanded ? {justifyContent: 'flex-start', marginLeft: '15%'} : {justifyContent: 'center'}} fun={navigateTo} link={item.link} index={item.index} active={Active} />
 					))}
 				</div>
 			</div>
 		);
-	} else if (props.type == 'Customer') {
+	} else if (props.type == 'Doctor') {
 		return (
 			<div className={`sidebar ${expanded ? 'expanded' : 'collapsed'}`} onSelect={(item) => console.log(item)}>
 				<div className='expand-toggle' onClick={toggleSidebar}>
 					{expanded ? <MenuOutlinedIcon /> : <MenuOutlinedIcon />}
 				</div>
 				<div>
-					{customer.map((item) => (
+					{doctor.map((item) => (
 						<MenuItem key={item.id} icon={item.icon} labelMargin={expanded ? {marginLeft: '10%'} : {marginLeft: '0%'}} label={expanded ? item.label : null} style={expanded ? {justifyContent: 'flex-start', marginLeft: '15%'} : {justifyContent: 'center'}} fun={navigateTo} link={item.link} index={item.index} active={Active} />
 					))}
 				</div>
 			</div>
 		);
-	} else if (props.type == 'resturantManager') {
+	} else if (props.type == 'Cashier') {
 		return (
 			<div className={`sidebar ${expanded ? 'expanded' : 'collapsed'}`} onSelect={(item) => console.log(item)}>
 				<div className='expand-toggle' onClick={toggleSidebar}>
 					{expanded ? <MenuOutlinedIcon /> : <MenuOutlinedIcon />}
 				</div>
 				<div>
-					{restaurant.map((item) => (
-						<MenuItem key={item.id} icon={item.icon} labelMargin={expanded ? {marginLeft: '10%'} : {marginLeft: '0%'}} label={expanded ? item.label : null} style={expanded ? {justifyContent: 'flex-start', marginLeft: '15%'} : {justifyContent: 'center'}} fun={navigateTo} link={item.link} index={item.index} active={Active} />
-					))}
-				</div>
-			</div>
-		);
-	} else if (props.type == 'productManufacture') {
-		return (
-			<div className={`sidebar ${expanded ? 'expanded' : 'collapsed'}`} onSelect={(item) => console.log(item)}>
-				<div className='expand-toggle' onClick={toggleSidebar}>
-					{expanded ? <MenuOutlinedIcon /> : <MenuOutlinedIcon />}
-				</div>
-				<div>
-					{manufacture.map((item) => (
+					{cashier.map((item) => (
 						<MenuItem key={item.id} icon={item.icon} labelMargin={expanded ? {marginLeft: '10%'} : {marginLeft: '0%'}} label={expanded ? item.label : null} style={expanded ? {justifyContent: 'flex-start', marginLeft: '15%'} : {justifyContent: 'center'}} fun={navigateTo} link={item.link} index={item.index} active={Active} />
 					))}
 				</div>
