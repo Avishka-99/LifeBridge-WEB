@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../../css/signin.css';
 import Toast from '../../componets/Toast';
 import * as ToastMessages from '../../componets/ToastMessages';
@@ -8,7 +8,14 @@ import {useNavigate} from 'react-router-dom';
 export default function Signin() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [user, setUser] = useState('Admin');
 	const navigate = useNavigate();
+	useEffect(() => {
+		if (user) {
+			navigate('/home');
+		}
+		//console.log("Landing");
+	}, []);
 	const handleSubmit = (e) => {
 		try {
 			Axios.post(API_ENDPOINTS.SIGNIN_URL, {
