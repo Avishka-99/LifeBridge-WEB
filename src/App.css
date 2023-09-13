@@ -30,3 +30,26 @@
 	font-family: poppins-semibold;
 	src: url('./assets/fonts/Poppins-SemiBold.ttf');
 }
+.outerContainer {
+	display: flex;
+	flex-direction: row;
+	height: 100vh;
+}
+.container {
+	width: 100%;
+	/* margin-left: 5%; */
+	flex: 1;
+	overflow-y: auto;
+
+	height: 100vh;
+	background-color: FFFFFF;
+}
+.outerContainer {
+	box-sizing: border-box;
+}
+
+div {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
