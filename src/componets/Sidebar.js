@@ -53,7 +53,7 @@ const ShowSidebar = (props) => {
 	];
 	const cashier = [
 		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
-		{id: 2, icon: <TodayIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Appoinments', link: 'appoinment', index: '2'},
+		// {id: 2, icon: <TodayIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Appoinments', link: 'appoinment', index: '2'},
 	];
 	//console.log(restaurant[0].icon.props.sx.fontSize)
 	const navigateTo = (page, index) => {

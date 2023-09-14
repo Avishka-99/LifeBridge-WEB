@@ -14,7 +14,7 @@ export default function Button(props) {
 				textAlign: 'center',
 				alignItems: 'center',
 				justifyContent: 'center',
-				fontSize: '2.3em',
+				fontSize: props.textSize ? props.textSize : '2.3em',
 				color: 'white',
 			}}
 		>

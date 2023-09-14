@@ -12,5 +12,5 @@ export const adminRoutes = [
 ];
 export const cashierRoutes = [
 	{id: 1, path: '/home', element: <UserViews.CashierHome />},
-	{id: 2, path: '/appoinment', element: <UserViews.Appoinment />},
+	// {id: 2, path: '/appoinment', element: <UserViews.Appoinment />},
 ];
