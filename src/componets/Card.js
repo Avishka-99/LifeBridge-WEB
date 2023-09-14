@@ -1,18 +1,15 @@
 import React from 'react';
 
 export default function Card(props) {
-	const styles = {
-		borderRadius: '12px',
-		backgroundColor: 'red',
-	};
 	return (
 		<div
 			className='card'
 			style={{
 				borderRadius: '35px',
-				backgroundColor: 'red',
+				backgroundColor: 'white',
 				height: '90%',
 				width: '30%',
+				boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
 			}}
 		>
 			<div
@@ -43,7 +40,7 @@ export default function Card(props) {
 			>
 				<span
 					style={{
-						fontSize: '4em',
+						fontSize: '2em',
 					}}
 				>
 					{props.text}
