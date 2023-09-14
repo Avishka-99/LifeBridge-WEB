@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TextInput from '../../componets/TextInput';
 import '../../css/admin/adminStaff.css';
 import Button from '../../componets/Button';
 
 export default function AddStaff() {
+	const [name, setName] = useState('');
+	const [nic, setnic] = useState('');
+	const [email, setemail] = useState('');
+	const [address, setaddress] = useState('');
+	const [role, setrole] = useState('');
+	const handleSubmit = () => {
+		console.log(name);
+		console.log(nic);
+		console.log(email);
+		console.log(address);
+		console.log(role);
+	};
 	return (
 		<div className='adminAddStaffBaseContainer'>
 			<div className='topContainer'>
@@ -26,10 +38,10 @@ export default function AddStaff() {
 						justifyContent: 'space-evenly',
 					}}
 				>
-					<TextInput text='Name' />
-					<TextInput text='NIC' />
-					<TextInput text='Email' />
-					<TextInput text='Address' />
+					<TextInput text='Name' onChange={setName} />
+					<TextInput text='NIC' onChange={setnic} />
+					<TextInput text='Email' onChange={setemail} />
+					<TextInput text='Address' onChange={setaddress} />
 					<select
 						name='cars'
 						id='cars'
@@ -44,11 +56,15 @@ export default function AddStaff() {
 							fontSize: '20px',
 							borderWidth: '0px',
 						}}
+						onChange={(e) => setrole(e.target.value)}
 					>
+						<option value='' selected disabled>
+							---Select role---
+						</option>
 						<option value='phamacist'>Phamacist</option>
 						<option value='cashier'>Cashier</option>
 					</select>
-					<Button name='ADD' />
+					<Button name='ADD' onClick={handleSubmit} />
 				</div>
 			</div>
 			<div className='bottomContainer'>
