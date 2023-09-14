@@ -1,8 +1,58 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TextInput from '../../componets/TextInput';
 import '../../css/admin/adminStaff.css';
 import Button from '../../componets/Button';
+import Axios from '../../api/Axios';
+import * as API_ENDPOINTS from '../../api/ApiEndpoints';
+
 export default function AddDoctors() {
+	const [name, setName] = useState('');
+	const [nic, setnic] = useState('');
+	const [email, setemail] = useState('');
+	const [address, setaddress] = useState('');
+	const [regno, setregno] = useState('');
+	const [speciality, setspeciality] = useState('');
+	const handleSubmit = () => {
+		console.log(name);
+		console.log(nic);
+		console.log(email);
+		console.log(address);
+		console.log(regno);
+		console.log(speciality);
+		try {
+			Axios.post(API_ENDPOINTS.ADD_DOCTOR_URL, {
+				name: name,
+				nic: nic,
+				email: email,
+				address: address,
+				regno: regno,
+				speciality: speciality,
+			}).then((response) => {
+				console.log(response);
+				// if (response.data.type) {
+				// 	dispatch(SetUserAction(response.data.type));
+				// 	localStorage.setItem('token', response.data.token);
+				// 	localStorage.setItem('userId', JSON.parse(atob(localStorage.getItem('token').split('.')[1])).userId);
+				// 	navigate('/home');
+				// 	//window.location.reload(true);
+				// } else if (response.data == 'Not verified') {
+				// 	ToastMessages.warning('Please verify your account');
+				// 	ToastMessages.info('Redirectiong to OTP verification');
+				// 	//resetFormData();
+				// 	setIsDisabled(true);
+				// 	localStorage.setItem('otpemail', email);
+				// 	setTimeout(function () {
+				// 		navigate('/otp');
+				// 	}, 3000);
+				// } else {
+				// 	ToastMessages.error(response.data);
+				// }
+				//console.log(response.data);
+			});
+		} catch (e) {
+			console.log('e.error');
+		}
+	};
 	return (
 		<div className='adminAddStaffBaseContainer'>
 			<div className='topContainer'>
@@ -25,11 +75,11 @@ export default function AddDoctors() {
 						justifyContent: 'space-evenly',
 					}}
 				>
-					<TextInput text='Name' width='12%' />
-					<TextInput text='NIC' width='12%' />
-					<TextInput text='Email' width='12%' />
-					<TextInput text='Address' width='12%' />
-					<TextInput text='SLMC Reg no' width='12%' />
+					<TextInput text='Name' width='12%' onChange={setName} />
+					<TextInput text='NIC' width='12%' onChange={setnic} />
+					<TextInput text='Email' width='12%' onChange={setemail} />
+					<TextInput text='Address' width='12%' onChange={setaddress} />
+					<TextInput text='SLMC Reg no' width='12%' onChange={setregno} />
 					<select
 						name='cars'
 						id='cars'
@@ -44,7 +94,11 @@ export default function AddDoctors() {
 							fontSize: '20px',
 							borderWidth: '0px',
 						}}
+						onChange={(e) => setspeciality(e.target.value)}
 					>
+						<option value='Allergy and Immunology' selected disabled>
+							----Select speciality----
+						</option>
 						<option value='Allergy and Immunology'>Allergy and Immunology</option>
 						<option value='Anesthesiology'>Anesthesiology</option>
 						<option value='Cardiology'>Cardiology</option>
@@ -78,7 +132,7 @@ export default function AddDoctors() {
 						<option value='Urology'>Urology</option>
 						<option value='Vascular Surgery'>Vascular Surgery</option>
 					</select>
-					<Button name='ADD' />
+					<Button name='ADD' onClick={handleSubmit} />
 				</div>
 			</div>
 			<div className='bottomContainer'>
