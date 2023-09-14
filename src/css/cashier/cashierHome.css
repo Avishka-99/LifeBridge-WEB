@@ -15,3 +15,27 @@
 	width: 100%;
 	height: 60%;
 }
+.react-datepicker-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.react-datepicker__input-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 70%;
+	width: 100%;
+}
+.react-datepicker__input-container > input {
+	outline: 4px solid #7eb693;
+	width: 60%;
+	height: 100%;
+	padding: 10px;
+	font-style: normal;
+	background-color: white;
+	border-radius: 1em;
+	line-height: 42px;
+	font-size: 20px;
+	border-width: 0px;
+}

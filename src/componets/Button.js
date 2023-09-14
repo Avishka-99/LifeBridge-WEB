@@ -1,13 +1,12 @@
 import React from 'react';
-
+import '../css/button.css';
 export default function Button(props) {
 	return (
 		<div
-			className='StaffAddButton'
+			className='AddButton'
 			style={{
 				width: '10%',
 				height: '100%',
-				backgroundColor: 'dodgerblue',
 				borderRadius: '35px',
 				fontFamily: 'poppins-medium',
 				display: 'flex',
@@ -17,6 +16,7 @@ export default function Button(props) {
 				fontSize: props.textSize ? props.textSize : '2.3em',
 				color: 'white',
 			}}
+			onClick={() => props.onClick()}
 		>
 			{props.name}
 		</div>
