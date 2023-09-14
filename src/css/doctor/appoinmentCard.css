@@ -1,0 +1,7 @@
+.appoinmentRoundedButton:hover {
+	cursor: pointer;
+	background-color: royalblue;
+}
+.appoinmentRoundedButton {
+	background-color: dodgerblue;
+}
