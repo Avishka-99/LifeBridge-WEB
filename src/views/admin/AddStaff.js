@@ -49,6 +49,78 @@ export default function AddStaff() {
 			console.log('e.error');
 		}
 	};
+	const employees = [
+		{
+			name: 'Alice Johnson',
+			nic: '950802-5678B',
+			address: '456 Elm Street, Townsville, NY 10001',
+			email: 'alice.johnson@email.com',
+			role: 'Pharmacy',
+		},
+		{
+			name: 'Bob Smith',
+			nic: '891215-1234C',
+			address: '789 Oak Avenue, Villagetown, TX 77002',
+			email: 'bob.smith@email.com',
+			role: 'Cashier',
+		},
+		{
+			name: 'Charlie Brown',
+			nic: '880530-9876D',
+			address: '101 Pine Road, Hamletsville, IL 60603',
+			email: 'charlie.brown@email.com',
+			role: 'Pharmacy',
+		},
+		{
+			name: 'David Wilson',
+			nic: '910705-2345E',
+			address: '321 Birch Lane, Suburbia, FL 33140',
+			email: 'david.wilson@email.com',
+			role: 'Cashier',
+		},
+		{
+			name: 'Emily Martinez',
+			nic: '930619-8765F',
+			address: '234 Maple Drive, Cityscape, CA 90210',
+			email: 'emily.martinez@email.com',
+			role: 'Pharmacy',
+		},
+		{
+			name: 'Frank White',
+			nic: '900415-3456G',
+			address: '555 Cedar Road, Villageland, TX 77001',
+			email: 'frank.white@email.com',
+			role: 'Cashier',
+		},
+		{
+			name: 'Grace Lee',
+			nic: '970103-7890H',
+			address: '789 Willow Lane, Townsville, NY 10002',
+			email: 'grace.lee@email.com',
+			role: 'Pharmacy',
+		},
+		{
+			name: 'Hannah Davis',
+			nic: '940724-5678I',
+			address: '999 Redwood Street, Villagetown, TX 77003',
+			email: 'hannah.davis@email.com',
+			role: 'Cashier',
+		},
+		{
+			name: 'Isaac Miller',
+			nic: '891208-2345J',
+			address: '123 Oak Avenue, Suburbia, FL 33141',
+			email: 'isaac.miller@email.com',
+			role: 'Pharmacy',
+		},
+		{
+			name: 'Jennifer Johnson',
+			nic: '920401-8765K',
+			address: '777 Pine Road, Cityscape, CA 90211',
+			email: 'jennifer.johnson@email.com',
+			role: 'Cashier',
+		},
+	];
 	return (
 		<div className='adminAddStaffBaseContainer'>
 			<div className='topContainer'>
@@ -113,36 +185,15 @@ export default function AddStaff() {
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Dewmini</td>
-								<td>101</td>
-								<td>Delivery</td>
-								<td>COD</td>
-							</tr>
-							<tr>
-								<td>Janadi</td>
-								<td>103</td>
-								<td>Delivery</td>
-								<td>COD</td>
-							</tr>
-							<tr>
-								<td>Tharindu</td>
-								<td>104</td>
-								<td>Delivery</td>
-								<td>COD</td>
-							</tr>
-							<tr>
-								<td>Tharindu</td>
-								<td>104</td>
-								<td>Delivery</td>
-								<td>COD</td>
-							</tr>
-							<tr>
-								<td>Tharindu</td>
-								<td>104</td>
-								<td>Delivery</td>
-								<td>COD</td>
-							</tr>
+							{employees.map((item) => (
+								<tr>
+									<td>{item.name}</td>
+									<td>{item.nic}</td>
+									<td>{item.email}</td>
+									<td>{item.address}</td>
+									<td>{item.role}</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</div>
