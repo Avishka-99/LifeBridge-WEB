@@ -11,6 +11,7 @@ export default function CashierHome() {
 	const [doctor, setDoctor] = useState(null);
 	const [name, setName] = useState(null);
 	const [age, setAge] = useState(null);
+	const [date, setDate] = useState(null);
 	const appointments = [
 		{
 			id: 1,
@@ -138,7 +139,7 @@ export default function CashierHome() {
 	const handleSubmit = () => {
 		if (doctor == null || name == null || age == null) {
 			ToastMessages.error('Please fill required fields');
-			console.log(startDate);
+			console.log(date);
 		} else {
 			ToastMessages.success('ela');
 		}
@@ -167,7 +168,8 @@ export default function CashierHome() {
 				>
 					<TextInput text='Name' onChange={setName} />
 					<TextInput text='Age' type='number' onChange={setAge} />
-					<DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+					<TextInput text='Age' type='date' onChange={setDate} />
+					{/* <DatePicker dateFormat='Pp' selected={startDate} onChange={(date) => setStartDate(date)} /> */}
 					<select
 						name='doctor'
 						id='cars'
