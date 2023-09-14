@@ -3,6 +3,8 @@ import TextInput from '../../componets/TextInput';
 import Button from '../../componets/Button';
 import Toast from '../../componets/Toast';
 import * as ToastMessages from '../../componets/ToastMessages';
+import Axios from '../../api/Axios';
+import * as API_ENDPOINTS from '../../api/ApiEndpoints';
 export default function Medicine() {
 	const [price, setPrice] = useState();
 	const [medicine, setMedicine] = useState();
@@ -11,7 +13,36 @@ export default function Medicine() {
 		if (price == null || medicine == null || qty == null) {
 			ToastMessages.error('Please fill required fields');
 		} else {
-			ToastMessages.success('ela');
+			try {
+				Axios.post(API_ENDPOINTS.ADD_MEDICINE_URL, {
+					name: medicine,
+					qty: qty,
+					price: price,
+				}).then((response) => {
+					console.log(response);
+					// if (response.data.type) {
+					// 	dispatch(SetUserAction(response.data.type));
+					// 	localStorage.setItem('token', response.data.token);
+					// 	localStorage.setItem('userId', JSON.parse(atob(localStorage.getItem('token').split('.')[1])).userId);
+					// 	navigate('/home');
+					// 	//window.location.reload(true);
+					// } else if (response.data == 'Not verified') {
+					// 	ToastMessages.warning('Please verify your account');
+					// 	ToastMessages.info('Redirectiong to OTP verification');
+					// 	//resetFormData();
+					// 	setIsDisabled(true);
+					// 	localStorage.setItem('otpemail', email);
+					// 	setTimeout(function () {
+					// 		navigate('/otp');
+					// 	}, 3000);
+					// } else {
+					// 	ToastMessages.error(response.data);
+					// }
+					//console.log(response.data);
+				});
+			} catch (e) {
+				console.log('e.error');
+			}
 		}
 	};
 	const medicines = [
