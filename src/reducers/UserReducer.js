@@ -1,6 +1,6 @@
 import {SET_USER} from '../constants/ActionTypes';
 const initialState = {
-	user: 'Cashier',
+	user: 'Doctor',
 };
 const UserReducer = (state = initialState, action) => {
 	switch (action.type) {
