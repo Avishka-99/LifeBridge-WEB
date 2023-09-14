@@ -8,7 +8,7 @@ export default function (props) {
 			style={{
 				outline: '4px solid #7eb693',
 				width: props.width ? props.width : '15%',
-				height: '70%',
+				height: props.height ? props.height : '70%',
 				padding: '10px',
 				fontStyle: 'normal',
 				backgroundColor: 'white',
