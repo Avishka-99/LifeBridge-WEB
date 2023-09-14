@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import TextInput from '../../componets/TextInput';
 import '../../css/admin/adminStaff.css';
 import Button from '../../componets/Button';
-
+import Axios from '../../api/Axios';
+import * as API_ENDPOINTS from '../../api/ApiEndpoints';
 export default function AddStaff() {
 	const [name, setName] = useState('');
 	const [nic, setnic] = useState('');
@@ -15,6 +16,38 @@ export default function AddStaff() {
 		console.log(email);
 		console.log(address);
 		console.log(role);
+		try {
+			Axios.post(API_ENDPOINTS.ADD_DOCTOR_URL, {
+				name: name,
+				nic: nic,
+				email: email,
+				address: address,
+				role: role,
+			}).then((response) => {
+				console.log(response);
+				// if (response.data.type) {
+				// 	dispatch(SetUserAction(response.data.type));
+				// 	localStorage.setItem('token', response.data.token);
+				// 	localStorage.setItem('userId', JSON.parse(atob(localStorage.getItem('token').split('.')[1])).userId);
+				// 	navigate('/home');
+				// 	//window.location.reload(true);
+				// } else if (response.data == 'Not verified') {
+				// 	ToastMessages.warning('Please verify your account');
+				// 	ToastMessages.info('Redirectiong to OTP verification');
+				// 	//resetFormData();
+				// 	setIsDisabled(true);
+				// 	localStorage.setItem('otpemail', email);
+				// 	setTimeout(function () {
+				// 		navigate('/otp');
+				// 	}, 3000);
+				// } else {
+				// 	ToastMessages.error(response.data);
+				// }
+				//console.log(response.data);
+			});
+		} catch (e) {
+			console.log('e.error');
+		}
 	};
 	return (
 		<div className='adminAddStaffBaseContainer'>
