@@ -3,7 +3,7 @@ import React from 'react';
 export default function (props) {
 	return (
 		<input
-			type='text'
+			type={props.type ? props.type : 'text'}
 			placeholder={props.text}
 			style={{
 				outline: '4px solid #7eb693',
@@ -17,6 +17,7 @@ export default function (props) {
 				fontSize: '20px',
 				borderWidth: '0px',
 			}}
+			onChange={(event) => props.onChange(event.target.value)}
 		></input>
 	);
 }

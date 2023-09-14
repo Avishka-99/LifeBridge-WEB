@@ -1,0 +1,7 @@
+.AddButton {
+	background-color: dodgerblue;
+}
+.AddButton:hover {
+	background-color: royalblue;
+	cursor: pointer;
+}
