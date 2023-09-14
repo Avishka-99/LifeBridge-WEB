@@ -1,0 +1,46 @@
+.adminBaseContainer {
+	font-family: 'Poppins', Arial, sans-serif;
+	background-color: #f6e4e4; /* Light gray background */
+	height: 100%;
+}
+.adminBaseContainer .topContainer {
+	width: 100%;
+	height: 40%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+.adminBaseContainer .bottomContainer {
+	width: 100%;
+	height: 60%;
+}
+.adminBaseContainer .bottomContainer .AdminRow_1Row5 {
+	width: 100%;
+	overflow-y: auto;
+	display: flex;
+	justify-content: center;
+}
+.AdminRow_1Row5 table {
+	border-collapse: collapse;
+	width: 98%;
+}
+.AdminRow_1Row5 th,
+.AdminRow_1Row5 td {
+	font-size: 35px;
+	/* border: 1px solid black; */
+	text-align: left;
+}
+.AdminRow_1Row5 th {
+	position: sticky;
+	top: 0;
+	background-color: #bcdac8;
+	height: 30px;
+	font-size: 40px;
+}
+.AdminRow_1Row5 th:first-child {
+	border-top-left-radius: 15px;
+}
+.AdminRow_1Row5 th:last-child {
+	border-top-right-radius: 15px;
+}
