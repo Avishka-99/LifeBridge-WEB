@@ -63,12 +63,12 @@ export default function Signin() {
 					<div className='submitButton' onClick={handleSubmit}>
 						Sign In
 					</div>
-					<div style={{display: 'flex', flexDirection: 'row'}}>
+					{/* <div style={{display: 'flex', flexDirection: 'row'}}>
 						<span>Not registered?</span>
 						<span className='signInText' style={{textDecoration: 'underline', color: 'dodgerblue'}} onClick={() => navigate('/signup')}>
 							Sign up
 						</span>
-					</div>
+					</div> */}
 				</div>
 			</div>
 			<Toast duration={3000} />

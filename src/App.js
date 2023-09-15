@@ -11,6 +11,7 @@ import Sidebar from './componets/Sidebar';
 import {useSelector} from 'react-redux';
 function App() {
 	//const [user, setUser] = useState('Admin');
+	//localStorage.clear('user');
 	const user = localStorage.getItem('user');
 	return (
 		<div className='App'>
@@ -23,7 +24,7 @@ function App() {
 						<Route element={<ProtectedRoutes isSignedIn={user} />}>
 							{user == 'Doctor' ? (
 								UserRoutes.doctorRoutes.map((item) => <Route key={item.id} path={item.path} element={item.element}></Route>)
-							) : user == 'Pharmacy' ? (
+							) : user == 'Phamacist' ? (
 								UserRoutes.pharmacyRoutes.map((item) => <Route key={item.key} path={item.path} element={item.element}></Route>)
 							) : user == 'Admin' ? (
 								UserRoutes.adminRoutes.map((item) => <Route key={item.key} path={item.path} element={item.element}></Route>)

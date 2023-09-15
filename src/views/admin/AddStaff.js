@@ -4,6 +4,8 @@ import '../../css/admin/adminStaff.css';
 import Button from '../../componets/Button';
 import Axios from '../../api/Axios';
 import * as API_ENDPOINTS from '../../api/ApiEndpoints';
+import Toast from '../../componets/Toast';
+import * as ToastMessages from '../../componets/ToastMessages';
 export default function AddStaff() {
 	const [name, setName] = useState('');
 	const [nic, setnic] = useState('');
@@ -40,6 +42,7 @@ export default function AddStaff() {
 				role: role,
 			}).then((response) => {
 				setstaff(response.data);
+				ToastMessages.success(role + ' added successfully');
 				// if (response.data.type) {
 				// 	dispatch(SetUserAction(response.data.type));
 				// 	localStorage.setItem('token', response.data.token);
@@ -181,8 +184,8 @@ export default function AddStaff() {
 						<option value='' selected disabled>
 							---Select role---
 						</option>
-						<option value='phamacist'>Phamacist</option>
-						<option value='cashier'>Cashier</option>
+						<option value='Phamacist'>Phamacist</option>
+						<option value='Cashier'>Cashier</option>
 					</select>
 					<Button name='ADD' onClick={handleSubmit} />
 				</div>
@@ -203,11 +206,11 @@ export default function AddStaff() {
 							{staff ? (
 								staff.map((item) => (
 									<tr>
-										<td>{item.name}</td>
-										<td>{item.nic}</td>
-										<td>{item.email}</td>
-										<td>{item.address}</td>
-										<td>{item.role}</td>
+										<td style={{fontSize: '25px'}}>{item.name}</td>
+										<td style={{fontSize: '25px'}}>{item.nic}</td>
+										<td style={{fontSize: '25px'}}>{item.email}</td>
+										<td style={{fontSize: '25px'}}>{item.address}</td>
+										<td style={{fontSize: '25px'}}>{item.role}</td>
 									</tr>
 								))
 							) : (
@@ -216,6 +219,7 @@ export default function AddStaff() {
 						</tbody>
 					</table>
 				</div>
+				<Toast duration={3000} />
 			</div>
 		</div>
 	);

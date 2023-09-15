@@ -84,7 +84,7 @@ const ShowSidebar = (props) => {
 				</div>
 			</div>
 		);
-	} else if (props.type == 'Pharmacy') {
+	} else if (props.type == 'Phamacist') {
 		return (
 			<div className={`sidebar ${expanded ? 'expanded' : 'collapsed'}`} onSelect={(item) => console.log(item)}>
 				<div className='expand-toggle' onClick={toggleSidebar}>

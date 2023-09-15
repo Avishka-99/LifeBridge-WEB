@@ -143,7 +143,7 @@ export default function CashierHome() {
 	const constants = [];
 	useEffect(() => {
 		Axios.post(API_ENDPOINTS.GET_DOCTORS).then((response) => {
-			console.log(response.data[0]._id);
+			//console.log(response.data[0]._id);
 			setConsultants(response.data);
 			Axios.post(API_ENDPOINTS.GET_APPOINMENTS).then((response) => {
 				console.log(response.data[0]);
@@ -219,7 +219,7 @@ export default function CashierHome() {
 						<option selected disabled>
 							Choose doctor
 						</option>
-						{consultants && consultants.map((doctor) => <option value={doctor._id}>{doctor.name + '(' + doctor.speciality + ')'}</option>)}
+						{consultants ? consultants.map((doctor) => <option value={doctor._id}>{doctor.name + '(' + doctor.speciality + ')'}</option>) : <></>}
 						{/* <option value='phamacist'>Phamacist</option>
 						<option value='cashier'>Cashier</option> */}
 					</select>

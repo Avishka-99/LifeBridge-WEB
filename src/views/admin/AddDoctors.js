@@ -4,7 +4,8 @@ import '../../css/admin/adminStaff.css';
 import Button from '../../componets/Button';
 import Axios from '../../api/Axios';
 import * as API_ENDPOINTS from '../../api/ApiEndpoints';
-
+import Toast from '../../componets/Toast';
+import * as ToastMessages from '../../componets/ToastMessages';
 export default function AddDoctors() {
 	const [name, setName] = useState('');
 	const [nic, setnic] = useState('');
@@ -44,6 +45,7 @@ export default function AddDoctors() {
 				speciality: speciality,
 			}).then((response) => {
 				setDoctors(response.data);
+				ToastMessages.success('Doctor added successfully');
 				//console.log(response.data);
 				// if (response.data.type) {
 				// 	dispatch(SetUserAction(response.data.type));
@@ -267,6 +269,7 @@ export default function AddDoctors() {
 						</tbody>
 					</table>
 				</div>
+				<Toast duration={3000} />
 			</div>
 		</div>
 	);

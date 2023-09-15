@@ -10,6 +10,7 @@ export default function Medicine() {
 	const [medicine, setMedicine] = useState();
 	const [qty, setQty] = useState();
 	const [medi, setMedicines] = useState();
+
 	useEffect(() => {
 		Axios.post(API_ENDPOINTS.GET_MEDICINE).then((response) => {
 			console.log(response.data);
@@ -35,6 +36,7 @@ export default function Medicine() {
 					price: price,
 				}).then((response) => {
 					setMedicines(response.data);
+					ToastMessages.success('Medicine added successfully');
 					// if (response.data.type) {
 					// 	dispatch(SetUserAction(response.data.type));
 					// 	localStorage.setItem('token', response.data.token);
@@ -198,8 +200,8 @@ export default function Medicine() {
 						<thead>
 							<tr>
 								<th>Name</th>
-								<th>Unit price (Rs.)</th>
 								<th>Quantity</th>
+								<th>Unit price (Rs.)</th>
 							</tr>
 						</thead>
 						<tbody>
