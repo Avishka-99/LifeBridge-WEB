@@ -11,7 +11,7 @@ import Sidebar from './componets/Sidebar';
 import {useSelector} from 'react-redux';
 function App() {
 	//const [user, setUser] = useState('Admin');
-	const user = useSelector((state) => state.UserReducer.user);
+	const user = localStorage.getItem('user');
 	return (
 		<div className='App'>
 			<div className='outerContainer'>

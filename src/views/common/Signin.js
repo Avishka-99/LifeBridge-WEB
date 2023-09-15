@@ -5,10 +5,13 @@ import * as ToastMessages from '../../componets/ToastMessages';
 import Axios from '../../api/Axios';
 import * as API_ENDPOINTS from '../../api/ApiEndpoints';
 import {useNavigate} from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
+import {SetUserAction} from '../../actions/UserActions';
 export default function Signin() {
+	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [user, setUser] = useState('Admin');
+	const user = localStorage.getItem('user');
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (user) {
@@ -22,26 +25,18 @@ export default function Signin() {
 				email: email,
 				password: password,
 			}).then((response) => {
-				console.log(response.data);
-				// if (response.data.type) {
-				// 	dispatch(SetUserAction(response.data.type));
-				// 	localStorage.setItem('token', response.data.token);
-				// 	localStorage.setItem('userId', JSON.parse(atob(localStorage.getItem('token').split('.')[1])).userId);
-				// 	navigate('/home');
-				// 	//window.location.reload(true);
-				// } else if (response.data == 'Not verified') {
-				// 	ToastMessages.warning('Please verify your account');
-				// 	ToastMessages.info('Redirectiong to OTP verification');
-				// 	//resetFormData();
-				// 	setIsDisabled(true);
-				// 	localStorage.setItem('otpemail', email);
-				// 	setTimeout(function () {
-				// 		navigate('/otp');
-				// 	}, 3000);
-				// } else {
-				// 	ToastMessages.error(response.data);
-				// }
 				//console.log(response.data);
+				if (response.data.type) {
+					localStorage.setItem('user', response.data.type);
+					//dispatch(SetUserAction(response.data.type));
+					//localStorage.setItem('token', response.data.token);
+					//localStorage.setItem('userId', JSON.parse(atob(localStorage.getItem('token').split('.')[1])).userId);
+					navigate('/home');
+					//window.location.reload(true);
+				} else {
+					ToastMessages.error(response.data);
+				}
+				console.log(response.data);
 			});
 		} catch (e) {
 			console.log('e.error');
