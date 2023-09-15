@@ -1,4 +1,4 @@
-import {SET_USER} from '../constants/ActionTypes';
+import {SET_USER, SET_DOCTORS} from '../constants/ActionTypes';
 export const SetUserAction = (payload) => {
 	return {
 		type: SET_USER,

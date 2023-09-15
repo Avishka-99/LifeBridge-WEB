@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextInput from '../../componets/TextInput';
 import '../../css/admin/adminStaff.css';
 import Button from '../../componets/Button';
@@ -12,6 +12,21 @@ export default function AddDoctors() {
 	const [address, setaddress] = useState('');
 	const [regno, setregno] = useState('');
 	const [speciality, setspeciality] = useState('');
+	const [doctors, setDoctors] = useState(null);
+	useEffect(() => {
+		Axios.post(API_ENDPOINTS.GET_DOCTORS).then((response) => {
+			console.log(response.data);
+			setDoctors(response.data);
+			// Axios.post(API_ENDPOINTS.GET_APPOINMENTS).then((response) => {
+			// 	console.log(response.data[0]);
+			// 	setAppoinments(response.data);
+			// 	//console.log(consultants);
+			// 	// dispatch(ALL_ACTIONS.setRestaurantAction(response.data));
+			// });
+			//console.log(consultants);
+			// dispatch(ALL_ACTIONS.setRestaurantAction(response.data));
+		});
+	}, []);
 	const handleSubmit = () => {
 		console.log(name);
 		console.log(nic);
@@ -28,7 +43,8 @@ export default function AddDoctors() {
 				regno: regno,
 				speciality: speciality,
 			}).then((response) => {
-				console.log(response);
+				setDoctors(response.data);
+				//console.log(response.data);
 				// if (response.data.type) {
 				// 	dispatch(SetUserAction(response.data.type));
 				// 	localStorage.setItem('token', response.data.token);
@@ -53,7 +69,7 @@ export default function AddDoctors() {
 			console.log('e.error');
 		}
 	};
-	const doctors = [
+	const doctorsg = [
 		{
 			name: 'Dr. Alice Johnson',
 			nic: '950802-5678B',
@@ -234,16 +250,20 @@ export default function AddDoctors() {
 							</tr>
 						</thead>
 						<tbody>
-							{doctors.map((item) => (
-								<tr>
-									<td>{item.name}</td>
-									<td>{item.nic}</td>
-									<td>{item.email}</td>
-									<td>{item.address}</td>
-									<td>{item.regno}</td>
-									<td>{item.specialty}</td>
-								</tr>
-							))}
+							{doctors ? (
+								doctors.map((item) => (
+									<tr>
+										<td style={{fontSize: '25px'}}>{item.name}</td>
+										<td style={{fontSize: '25px'}}>{item.nic}</td>
+										<td style={{fontSize: '25px'}}>{item.email}</td>
+										<td style={{fontSize: '25px'}}>{item.address}</td>
+										<td style={{fontSize: '25px'}}>{item.regno}</td>
+										<td style={{fontSize: '25px'}}>{item.speciality}</td>
+									</tr>
+								))
+							) : (
+								<div></div>
+							)}
 						</tbody>
 					</table>
 				</div>

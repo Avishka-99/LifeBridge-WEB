@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextInput from '../../componets/TextInput';
 import '../../css/admin/adminStaff.css';
 import Button from '../../componets/Button';
@@ -10,6 +10,21 @@ export default function AddStaff() {
 	const [email, setemail] = useState('');
 	const [address, setaddress] = useState('');
 	const [role, setrole] = useState('');
+	const [staff, setstaff] = useState(null);
+	useEffect(() => {
+		Axios.post(API_ENDPOINTS.GET_STAFF).then((response) => {
+			console.log(response.data);
+			setstaff(response.data);
+			// Axios.post(API_ENDPOINTS.GET_APPOINMENTS).then((response) => {
+			// 	console.log(response.data[0]);
+			// 	setAppoinments(response.data);
+			// 	//console.log(consultants);
+			// 	// dispatch(ALL_ACTIONS.setRestaurantAction(response.data));
+			// });
+			//console.log(consultants);
+			// dispatch(ALL_ACTIONS.setRestaurantAction(response.data));
+		});
+	}, []);
 	const handleSubmit = () => {
 		console.log(name);
 		console.log(nic);
@@ -17,14 +32,14 @@ export default function AddStaff() {
 		console.log(address);
 		console.log(role);
 		try {
-			Axios.post(API_ENDPOINTS.ADD_DOCTOR_URL, {
+			Axios.post(API_ENDPOINTS.ADD_STAFF_URL, {
 				name: name,
 				nic: nic,
 				email: email,
 				address: address,
 				role: role,
 			}).then((response) => {
-				console.log(response);
+				setstaff(response.data);
 				// if (response.data.type) {
 				// 	dispatch(SetUserAction(response.data.type));
 				// 	localStorage.setItem('token', response.data.token);
@@ -185,15 +200,19 @@ export default function AddStaff() {
 							</tr>
 						</thead>
 						<tbody>
-							{employees.map((item) => (
-								<tr>
-									<td>{item.name}</td>
-									<td>{item.nic}</td>
-									<td>{item.email}</td>
-									<td>{item.address}</td>
-									<td>{item.role}</td>
-								</tr>
-							))}
+							{staff ? (
+								staff.map((item) => (
+									<tr>
+										<td>{item.name}</td>
+										<td>{item.nic}</td>
+										<td>{item.email}</td>
+										<td>{item.address}</td>
+										<td>{item.role}</td>
+									</tr>
+								))
+							) : (
+								<div></div>
+							)}
 						</tbody>
 					</table>
 				</div>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextInput from '../../componets/TextInput';
 import Button from '../../componets/Button';
 import '../../css/cashier/cashierHome.css';
@@ -6,12 +6,16 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Toast from '../../componets/Toast';
 import * as ToastMessages from '../../componets/ToastMessages';
+import * as API_ENDPOINTS from '../../api/ApiEndpoints';
+import Axios from '../../api/Axios';
 export default function CashierHome() {
 	const [startDate, setStartDate] = useState(new Date());
 	const [doctor, setDoctor] = useState(null);
 	const [name, setName] = useState(null);
 	const [age, setAge] = useState(null);
 	const [date, setDate] = useState(null);
+	const [consultants, setConsultants] = useState('');
+	const [appoinments, setAppoinments] = useState(null);
 	const appointments = [
 		{
 			id: 1,
@@ -136,12 +140,38 @@ export default function CashierHome() {
 			registrationNumber: '123456',
 		},
 	];
+	const constants = [];
+	useEffect(() => {
+		Axios.post(API_ENDPOINTS.GET_DOCTORS).then((response) => {
+			console.log(response.data[0]._id);
+			setConsultants(response.data);
+			Axios.post(API_ENDPOINTS.GET_APPOINMENTS).then((response) => {
+				console.log(response.data[0]);
+				setAppoinments(response.data);
+				//console.log(consultants);
+				// dispatch(ALL_ACTIONS.setRestaurantAction(response.data));
+			});
+			//console.log(consultants);
+			// dispatch(ALL_ACTIONS.setRestaurantAction(response.data));
+		});
+	}, []);
 	const handleSubmit = () => {
 		if (doctor == null || name == null || age == null) {
 			ToastMessages.error('Please fill required fields');
-			console.log(date);
 		} else {
-			ToastMessages.success('ela');
+			try {
+				Axios.post(API_ENDPOINTS.ADD_APPOINMENT_URL, {
+					name: name,
+					age: age,
+					date: date,
+					doctor: doctor,
+				}).then((response) => {
+					setAppoinments(response.data);
+					//console.log(response);
+				});
+			} catch (e) {
+				console.log('e.error');
+			}
 		}
 	};
 	return (
@@ -189,9 +219,7 @@ export default function CashierHome() {
 						<option selected disabled>
 							Choose doctor
 						</option>
-						{doctors.map((doctor) => (
-							<option value={doctor.registrationNumber}>{doctor.doctorName + '(' + doctor.specialty + ')'}</option>
-						))}
+						{consultants && consultants.map((doctor) => <option value={doctor._id}>{doctor.name + '(' + doctor.speciality + ')'}</option>)}
 						{/* <option value='phamacist'>Phamacist</option>
 						<option value='cashier'>Cashier</option> */}
 					</select>
@@ -210,14 +238,18 @@ export default function CashierHome() {
 							</tr>
 						</thead>
 						<tbody>
-							{appointments.map((item) => (
-								<tr>
-									<td>{item.patientName}</td>
-									<td>{item.doctorName}</td>
-									<td>{item.age}</td>
-									<td>{item.appointmentDate}</td>
-								</tr>
-							))}
+							{appoinments ? (
+								appoinments.map((item) => (
+									<tr>
+										<td>{item.name}</td>
+										<td>{item.dname}</td>
+										<td>{item.age}</td>
+										<td>{item.date}</td>
+									</tr>
+								))
+							) : (
+								<div></div>
+							)}
 						</tbody>
 					</table>
 				</div>

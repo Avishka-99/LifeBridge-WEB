@@ -41,18 +41,24 @@ const ShowSidebar = (props) => {
     navigate('/order');
   })*/
 	//console.log(user);
-	const doctor = [{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'}];
+	const doctor = [
+		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
+		{id: 2, icon: <LogoutIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'LogOut', link: 'logout', index: '2'},
+	];
 	const admin = [
 		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
 		{id: 2, icon: <GroupsIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Staff', link: 'staff', index: '2'},
 		{id: 3, icon: <MedicalInformationIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Doctor', link: 'doctor', index: '3'},
+		{id: 4, icon: <LogoutIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'LogOut', link: 'logout', index: '4'},
 	];
 	const pharmacy = [
 		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
 		{id: 2, icon: <MedicationIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Medicine', link: 'medicine', index: '2'},
+		{id: 3, icon: <LogoutIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'LogOut', link: 'logout', index: '3'},
 	];
 	const cashier = [
 		{id: 1, icon: <HomeIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Home', link: 'home', index: '1'},
+		{id: 2, icon: <LogoutIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'LogOut', link: 'logout', index: '2'},
 		// {id: 2, icon: <TodayIcon sx={{fontSize: 40, fill: '#6F767F'}} />, label: 'Appoinments', link: 'appoinment', index: '2'},
 	];
 	//console.log(restaurant[0].icon.props.sx.fontSize)
@@ -61,6 +67,7 @@ const ShowSidebar = (props) => {
 		if (page == 'logout') {
 			setActive(1);
 			localStorage.clear('type');
+			navigate('/');
 		}
 		navigate('/' + page);
 	};
