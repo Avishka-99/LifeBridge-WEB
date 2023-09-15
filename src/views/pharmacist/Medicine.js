@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextInput from '../../componets/TextInput';
 import Button from '../../componets/Button';
 import Toast from '../../componets/Toast';
@@ -9,6 +9,21 @@ export default function Medicine() {
 	const [price, setPrice] = useState();
 	const [medicine, setMedicine] = useState();
 	const [qty, setQty] = useState();
+	const [medi, setMedicines] = useState();
+	useEffect(() => {
+		Axios.post(API_ENDPOINTS.GET_MEDICINE).then((response) => {
+			console.log(response.data);
+			setMedicines(response.data);
+			// Axios.post(API_ENDPOINTS.GET_APPOINMENTS).then((response) => {
+			// 	console.log(response.data[0]);
+			// 	setAppoinments(response.data);
+			// 	//console.log(consultants);
+			// 	// dispatch(ALL_ACTIONS.setRestaurantAction(response.data));
+			// });
+			//console.log(consultants);
+			// dispatch(ALL_ACTIONS.setRestaurantAction(response.data));
+		});
+	}, []);
 	const handleSubmit = () => {
 		if (price == null || medicine == null || qty == null) {
 			ToastMessages.error('Please fill required fields');
@@ -19,7 +34,7 @@ export default function Medicine() {
 					qty: qty,
 					price: price,
 				}).then((response) => {
-					console.log(response);
+					setMedicines(response.data);
 					// if (response.data.type) {
 					// 	dispatch(SetUserAction(response.data.type));
 					// 	localStorage.setItem('token', response.data.token);
@@ -188,13 +203,17 @@ export default function Medicine() {
 							</tr>
 						</thead>
 						<tbody>
-							{medicines.map((item) => (
-								<tr>
-									<td>{item.medicineName}</td>
-									<td>{item.unitPrice}</td>
-									<td>{item.quantity}</td>
-								</tr>
-							))}
+							{medi ? (
+								medi.map((item) => (
+									<tr>
+										<td>{item.name}</td>
+										<td>{item.qty}</td>
+										<td>{item.price}</td>
+									</tr>
+								))
+							) : (
+								<div></div>
+							)}
 						</tbody>
 					</table>
 				</div>

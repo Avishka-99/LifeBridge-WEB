@@ -15,9 +15,7 @@ function App() {
 	return (
 		<div className='App'>
 			<div className='outerContainer'>
-				<div className='sidebar'>
-					<Sidebar type={user} />
-				</div>
+				<div className='sidebar'>{user && <Sidebar type={user} />}</div>
 				<div className='container' style={{width: '95%'}}>
 					<Routes>
 						<Route path='/' element={<Signin />}></Route>

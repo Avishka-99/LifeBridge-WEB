@@ -7,3 +7,6 @@ export const ADD_DOCTOR_URL = '/api/adddoctor';
 export const GET_DOCTORS = '/api/getdoctors';
 export const GET_APPOINMENTS = '/api/getallappoinments';
 export const GET_STAFF = '/api/getstaff';
+export const GET_DOCTOR_APPOINMENTS = '/api/getmyappoinments';
+export const SET_PRESCRIPTION = '/api/setprescription';
+export const GET_MEDICINE = '/api/getmedicine';
