@@ -28,7 +28,10 @@ export default function Signin() {
 				//console.log(response.data);
 				if (response.data.type) {
 					localStorage.setItem('user', response.data.type);
-					//dispatch(SetUserAction(response.data.type));
+					if (response.data.id) {
+						localStorage.setItem('id', response.data.id);
+					}
+					dispatch(SetUserAction(response.data.type));
 					//localStorage.setItem('token', response.data.token);
 					//localStorage.setItem('userId', JSON.parse(atob(localStorage.getItem('token').split('.')[1])).userId);
 					navigate('/home');

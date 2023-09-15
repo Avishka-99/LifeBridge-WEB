@@ -1,7 +1,27 @@
 import {flexbox} from '@mui/system';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import '../css/doctor/appoinmentCard.css';
+import Axios from '../api/Axios';
+import * as API_ENDPOINTS from '../api/ApiEndpoints';
 export default function AppoinmentCard(props) {
+	const id = props.details._id;
+	const [postContent, setPostContent] = useState('');
+	const handleSubmit = (id) => {
+		Axios.post(API_ENDPOINTS.SET_PRESCRIPTION, {
+			id: id,
+			data: postContent,
+		}).then((response) => {
+			console.log(response.data);
+		});
+	};
+	// useEffect(() => {
+	// 	Axios.post(API_ENDPOINTS.SET_PRESCRIPTION, {
+	// 		id: id,
+	// 		data: postContent,
+	// 	}).then((response) => {
+	// 		console.log(response.data);
+	// 	});
+	// }, []);
 	return (
 		<div
 			style={{
@@ -30,7 +50,7 @@ export default function AppoinmentCard(props) {
 						fontSize: '1.2em',
 					}}
 				>
-					{props.details.patientName}
+					{props.details.name}
 				</span>
 				<span
 					style={{
@@ -43,10 +63,10 @@ export default function AppoinmentCard(props) {
 				</span>
 			</div>
 			<div style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '60%'}}>
-				<textarea style={{width: '98%', height: '100%'}} />
+				<textarea onChange={(e) => setPostContent(e.target.value)} style={{width: '98%', height: '100%'}} />
 			</div>
 			<div style={{width: '100%', height: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-				<div className='appoinmentRoundedButton' style={{width: '60%', height: '90%', borderRadius: '35px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'poppins-medium', fontSize: '1.8em', color: 'white'}}>
+				<div onClick={() => handleSubmit(id)} className='appoinmentRoundedButton' style={{width: '60%', height: '90%', borderRadius: '35px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'poppins-medium', fontSize: '1.8em', color: 'white'}}>
 					Submit
 				</div>
 			</div>
