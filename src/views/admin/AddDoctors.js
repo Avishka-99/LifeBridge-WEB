@@ -69,6 +69,91 @@ export default function AddDoctors() {
 			console.log('e.error');
 		}
 	};
+	const doctorsg = [
+		{
+			name: 'Dr. Alice Johnson',
+			nic: '950802-5678B',
+			address: '456 Elm Street, Townsville, NY 10001',
+			email: 'alice.johnson@email.com',
+			regno: 'MD123456',
+			specialty: 'Cardiology',
+		},
+		{
+			name: 'Dr. Bob Smith',
+			nic: '891215-1234C',
+			address: '789 Oak Avenue, Villagetown, TX 77002',
+			email: 'bob.smith@email.com',
+			regno: 'MD234567',
+			specialty: 'Orthopedics',
+		},
+		{
+			name: 'Dr. Charlie Brown',
+			nic: '880530-9876D',
+			address: '101 Pine Road, Hamletsville, IL 60603',
+			email: 'charlie.brown@email.com',
+			regno: 'MD345678',
+			specialty: 'Pediatrics',
+		},
+		{
+			name: 'Dr. David Wilson',
+			nic: '910705-2345E',
+			address: '321 Birch Lane, Suburbia, FL 33140',
+			email: 'david.wilson@email.com',
+			regno: 'MD456789',
+			specialty: 'Dermatology',
+		},
+		{
+			name: 'Dr. Emily Martinez',
+			nic: '930619-8765F',
+			address: '234 Maple Drive, Cityscape, CA 90210',
+			email: 'emily.martinez@email.com',
+			regno: 'MD567890',
+			specialty: 'Oncology',
+		},
+		{
+			name: 'Dr. Frank White',
+			nic: '900415-3456G',
+			address: '555 Cedar Road, Villageland, TX 77001',
+			email: 'frank.white@email.com',
+			regno: 'MD678901',
+			specialty: 'Neurology',
+		},
+		{
+			name: 'Dr. Grace Lee',
+			nic: '970103-7890H',
+			address: '789 Willow Lane, Townsville, NY 10002',
+			email: 'grace.lee@email.com',
+			regno: 'MD789012',
+			specialty: 'Gastroenterology',
+		},
+		{
+			name: 'Dr. Hannah Davis',
+			nic: '940724-5678I',
+			address: '999 Redwood Street, Villagetown, TX 77003',
+			email: 'hannah.davis@email.com',
+			regno: 'MD890123',
+			specialty: 'Urology',
+		},
+		{
+			name: 'Dr. Isaac Miller',
+			nic: '891208-2345J',
+			address: '123 Oak Avenue, Suburbia, FL 33141',
+			email: 'isaac.miller@email.com',
+			regno: 'MD901234',
+			specialty: 'Psychiatry',
+		},
+		{
+			name: 'Dr. Jennifer Johnson',
+			nic: '920401-8765K',
+			address: '777 Pine Road, Cityscape, CA 90211',
+			email: 'jennifer.johnson@email.com',
+			regno: 'MD012345',
+			specialty: 'Ophthalmology',
+		},
+	];
+
+	// Accessing object properties
+
 	return (
 		<div className='adminAddStaffBaseContainer'>
 			<div className='topContainer'>
